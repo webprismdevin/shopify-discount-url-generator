@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopify Discount Code URL Generator</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+  </head>
+  <body>
+    <main
+      x-data="{ url: 'https://example.com', code: 'WELCOME', redirect: false, redirect_path: '/collection/best-sellers' }"
+    >
+      <h1>Shopify Discount Code URL Generator</h1>
+      <p>
+        This tool will generate a URL that will automatically apply a discount
+        code to the user's cart. This is useful for email marketing campaigns or ads
+        where you want to send a user to a page with a discount already applied.
+        </p>
+        <label for="url">Enter your Shopify store URL</label>
+        <input
+        name="url"
+          x-model="url"
+          type="text"
+          placeholder="Enter your Shopify store URL"
+        />
+        <label for="code">Enter your discount code</label>
+        <input
+            name="code"
+          x-model="code"
+          type="text"
+          placeholder="Enter the discount code you want applied"
+        />
+      </p>
+
+      <hr />
+      <fieldset>
+        <label for="switch">
+          <input
+            x-model="redirect"
+            type="checkbox"
+            id="switch"
+            name="switch"
+            role="switch"
+          />
+          Do you want the user to land on a page other than the home page?
+        </label>
+      </fieldset>
+      <div x-show="redirect">
+        <label for="redirect">Enter the page page you want the user to land on</label>
+        <input
+          x-model="redirect_path"
+          name="redirect"
+          type="text"
+          placeholder="Enter the page page you want the user to land on"
+        />
+        <label for="redirect"
+          >Ex: <code>/pages/my-landing-page</code> or
+          <code>/collection/best-sellers</code></label
+        >
+      </div>
+      <hr />
+      <h2>Your discount code URL:</h2>
+      <code
+        x-show="url && code"
+        x-text="
+                if(!redirect) { return url + '/discount/' + code }
+                else { return url + '/discount/' + code + '?redirect=' + redirect_path }
+            "
+      ></code>
+    </main>
+    <footer>
+      <p>
+        Made with ❤️ by
+        <a href="https://webprism.co" target="_blank"
+          ><strong>webprism</strong></a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
