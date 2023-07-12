@@ -4,27 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopify Discount Code URL Generator</title>
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="alpine.min.js" defer></script>
     <meta property="og:image" content="automatic-discounts-open-graph.jpg">
     <meta property="og:title" content="Shopify Discount Code URL Generator. Made with ❤️ by webprism.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+      href="pico.classless.min.css"
     />
-    <script defer data-domain="shopify-discount-link-generator.webprism.co" src="https://plausible.io/js/script.js"></script>
+    <!-- <script defer data-domain="shopify-discount-link-generator.webprism.co" src="plausible.js"></script> -->
   </head>
   <div style="background-color: white; padding: 0.5rem; text-align: center;"><a href="https://webprism.co" target="_blank">Click here to level up your Shopify store</a></div>
-  <body>
+  <body style="min-width: 400px; min-height: 600px;">
     <main
       x-data="{ url: 'https://example.com', code: 'WELCOME', redirect: false, redirect_path: '/collections/best-sellers' }"
     >
-      <h1>Shopify Discount Code URL Generator</h1>
-      <p>
-        This tool will generate a URL that will automatically apply a discount
-        code to the user's cart. This is useful for email marketing campaigns or ads
-        where you want to send a user to a page with a discount already applied.
-        </p>
+    <a href="#description">About</a>
+
+      <h1>Automatic Discount Code URL Generator for Shopify</h1>
         <label for="url">Enter your Shopify store URL</label>
         <input
         name="url"
@@ -77,7 +74,13 @@
             "
       ></input>
       <br><br>
-      <button class="plausible-event-name=Copy+Link" onclick="copyLink()">Copy to clipboard</button>
+      <!-- <button class="plausible-event-name=Copy+Link" onclick="copyLink()">Copy to clipboard</button> -->
+      <hr>
+      <p id="description">
+        This tool will generate a URL that will automatically apply a discount
+        code to the user's cart. This is useful for email marketing campaigns or ads
+        where you want to send a user to a page with a discount already applied.
+        </p>
     </main>
     <footer>
       <p>
@@ -88,21 +91,5 @@
       </p>
     </footer>
   </body>
-  <script>
-    function copyLink() {
-  // Get the text field
-  var copyText = document.getElementById("my_link");
-
-  // Select the text field
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
-
-   // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value).then(function() {
-    alert("Copied to clipboard!");
-  }, function(err) {
-    console.error('Async: Could not copy text: ', err);
-  });
-}
-  </script>
+  <!-- <script src="copy-text.js"></script> -->
 </html>

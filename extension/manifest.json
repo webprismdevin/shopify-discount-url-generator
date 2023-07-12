@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Shopify Automatic Discount Link Generator",
+  "version": "1.0",
+  "description": "Create links that automatically apply discounts to your customers Shopify cart.",
+  "icons": {
+    "128": "img/icons128.png"
+  },
+  "background": {
+    "js": ["alpine.min.js", "plausible.js"]
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_security_policy": {
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
+  },
+  "sandbox": {
+    "pages": ["index.html"]
+  },
+  "permissions": [],
+  "host_permissions": []
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopify Discount Code URL Generator</title>
+    <script src="alpine.min.js" defer></script>
+    <meta property="og:image" content="automatic-discounts-open-graph.jpg">
+    <meta property="og:title" content="Shopify Discount Code URL Generator. Made with ❤️ by webprism.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link
+      rel="stylesheet"
+      href="pico.classless.min.css"
+    />
+    <script defer data-domain="shopify-discount-link-generator.webprism.co" src="plausible.js"></script>
+  </head>
+  <div style="background-color: white; padding: 0.5rem; text-align: center;"><a href="https://webprism.co" target="_blank">Click here to level up your Shopify store</a></div>
+  <body style="min-width: 400px; min-height: 600px;">
+    <main
+      x-data="{ url: 'https://example.com', code: 'WELCOME', redirect: false, redirect_path: '/collections/best-sellers' }"
+    >
+    <div><a href="#description">About</a>&nbsp;|&nbsp;<a href="https://drive.google.com/file/d/1VtgMbp6M_8ovuIiAYQsf2CWXLspuIPTw/view?usp=drive_link">Download Chrome Extension</a></div>
+
+      <h1>Automatic Discount Code URL Generator for Shopify</h1>
+        <label for="url">Enter your Shopify store URL</label>
+        <input
+        name="url"
+          x-model="url"
+          type="text"
+          placeholder="Enter your Shopify store URL"
+        />
+        <label for="code">Enter your discount code</label>
+        <input
+            name="code"
+          x-model="code"
+          type="text"
+          placeholder="Enter the discount code you want applied"
+        />
+      </p>
+      <fieldset>
+        <label for="switch">
+          <input
+            x-model="redirect"
+            type="checkbox"
+            id="switch"
+            name="switch"
+            role="switch"
+          />
+          Do you want the user to land on a page other than the home page?
+        </label>
+      </fieldset>
+      <div x-show="redirect">
+        <label for="redirect">Enter the page page you want the user to land on</label>
+        <input
+          x-model="redirect_path"
+          name="redirect"
+          type="text"
+          placeholder="Enter the page page you want the user to land on"
+        />
+        <label for="redirect"
+          >Ex: <code>/pages/my-landing-page</code> or
+          <code>/collections/best-sellers</code></label
+        >
+      </div>
+      <hr />
+      <h2>Your discount code URL:</h2>
+      <input
+        id="my_link"
+        x-show="url && code"
+        readonly
+        x-bind:value="
+                if(!redirect) { return url + '/discount/' + code }
+                else { return url + '/discount/' + code + '?redirect=' + redirect_path }
+            "
+      ></input>
+      <br><br>
+      <button class="plausible-event-name=Copy+Link" onclick="copyLink()">Copy to clipboard</button>
+      <hr>
+      <p id="description">
+        This tool will generate a URL that will automatically apply a discount
+        code to the user's cart. This is useful for email marketing campaigns or ads
+        where you want to send a user to a page with a discount already applied.
+        </p>
+    </main>
+    <footer>
+      <p>
+        Made with ❤️ by
+        <a href="https://webprism.co" target="_blank"
+          ><strong>webprism</strong></a
+        >
+      </p>
+    </footer>
+  </body>
+  <script src="copy-text.js"></script>
+</html>
