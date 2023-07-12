@@ -17,7 +17,7 @@
   <div style="background-color: white; padding: 0.5rem; text-align: center;"><a href="https://webprism.co" target="_blank">Click here to level up your Shopify store</a></div>
   <body>
     <main
-      x-data="{ url: 'https://example.com', code: 'WELCOME', redirect: false, redirect_path: '/collection/best-sellers' }"
+      x-data="{ url: 'https://example.com', code: 'WELCOME', redirect: false, redirect_path: '/collections/best-sellers' }"
     >
       <h1>Shopify Discount Code URL Generator</h1>
       <p>
@@ -40,8 +40,6 @@
           placeholder="Enter the discount code you want applied"
         />
       </p>
-
-      <hr />
       <fieldset>
         <label for="switch">
           <input
@@ -64,7 +62,7 @@
         />
         <label for="redirect"
           >Ex: <code>/pages/my-landing-page</code> or
-          <code>/collection/best-sellers</code></label
+          <code>/collections/best-sellers</code></label
         >
       </div>
       <hr />
@@ -100,10 +98,11 @@
   copyText.setSelectionRange(0, 99999); // For mobile devices
 
    // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-
-  // Alert the copied text
-  alert("Copied the text: " + copyText.value);
+  navigator.clipboard.writeText(copyText.value).then(function() {
+    alert("Copied to clipboard!");
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
 }
   </script>
 </html>
